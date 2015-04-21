@@ -5,7 +5,7 @@ Similar text finder. Install via composer, works with any framework: Laravel, Sl
 
 ```php
 // Init text Finder
-$text_finder = new \SimilarText\Finder('bananna', ['apple','kiwi','banana','orange','banner']);
+$text_finder = new \SimilarText\Finder('bananna', ['apple', 'kiwi', 'banana', 'orange']);
 
 // 
 echo $text_finder->first();
