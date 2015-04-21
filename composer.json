@@ -2,6 +2,7 @@
     "name": "rap2hpoutre/similar-text-finder",
     "description": "Similar text finder: \"Did you mean `foo` ?\"",
     "license": "MIT",
+    "keywords": ["text", "levenshtein", "similar_text", "laravel", "search", "find"],
     "authors": [
         {
             "name": "Raphael Huchet",
