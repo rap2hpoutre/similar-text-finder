@@ -38,7 +38,7 @@ You can get all your suggestion ordered by most approching words like this:
 $all = $tf->all();
 ```
 
-Example in raw php:
+### Example in raw PHP
 ```php
 use SimilarText\Finder;
 
