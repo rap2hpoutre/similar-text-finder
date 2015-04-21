@@ -49,7 +49,7 @@ $needle = 'tmatoes';
 $haystack = ['salad', 'tomatoes', 'onions', 'mates'];
 
 // Init Text Finder
-$finder = new \SimilarText\Finder($needle, $haystack);
+$finder = new Finder($needle, $haystack);
 
 // Display all results ordered by the most approching
 $results = $finder->all();
