@@ -13,7 +13,7 @@ class FinderTest extends \PHPUnit_Framework_TestCase
      */
     public function testFirst()
     {
-        $text_finder = new Finder('bananna', ['apple','kiwi','banana','orange','banner']);
+        $text_finder = new Finder('bananna', ['apple', 'kiwi', 'banana', 'orange', 'banner']);
         $this->assertEquals('banana', $text_finder->first());
     }
 
@@ -22,7 +22,7 @@ class FinderTest extends \PHPUnit_Framework_TestCase
      */
     public function testAll()
     {
-        $text_finder = new Finder('bananna', ['apple','kiwi','Ü◘ö']);
+        $text_finder = new Finder('bananna', ['apple', 'kiwi', 'Ü◘ö']);
         $this->assertCount(3, $text_finder->all());
     }
 
@@ -30,7 +30,7 @@ class FinderTest extends \PHPUnit_Framework_TestCase
      * Test hasExactMatch() method
      */
     public function testHasExactMatch() {
-        $text_finder = new Finder('banana', ['apple','kiwi','banana']);
+        $text_finder = new Finder('banana', ['apple', 'kiwi', 'banana']);
         $this->assertTrue($text_finder->hasExactMatch());
     }
 
@@ -38,7 +38,7 @@ class FinderTest extends \PHPUnit_Framework_TestCase
      * Test hasExactMatch() method
      */
     public function testHasNotExactMatch() {
-        $text_finder = new Finder('banana', ['apple','kiwi']);
+        $text_finder = new Finder('banana', ['apple', 'kiwi']);
         $this->assertFalse($text_finder->hasExactMatch());
     }
 }
