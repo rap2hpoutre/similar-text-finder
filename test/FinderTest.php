@@ -25,4 +25,20 @@ class FinderTest extends \PHPUnit_Framework_TestCase
         $text_finder = new Finder('bananna', ['apple','kiwi','Ü◘ö']);
         $this->assertCount(3, $text_finder->all());
     }
+
+    /**
+     * Test hasExactMatch() method
+     */
+    public function testHasExactMatch() {
+        $text_finder = new Finder('banana', ['apple','kiwi','banana']);
+        $this->assertTrue($text_finder->hasExactMatch());
+    }
+
+    /**
+     * Test hasExactMatch() method
+     */
+    public function testHasNotExactMatch() {
+        $text_finder = new Finder('banana', ['apple','kiwi']);
+        $this->assertFalse($text_finder->hasExactMatch());
+    }
 }
