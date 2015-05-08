@@ -69,6 +69,13 @@ class Finder
     }
 
     /**
+     * @return bool
+     */
+    public function hasExactMatch() {
+        return in_array($this->needle, $this->haystack);
+    }
+
+    /**
      * @param $str
      * @param $map
      * @return string
