@@ -1,8 +1,8 @@
 {
     "name": "rap2hpoutre/similar-text-finder",
-    "description": "Similar text finder: \"Did you mean `foo` ?\"",
+    "description": "Fuzzy Search, similar text finder: \"Did you mean `foo` ?\"",
     "license": "MIT",
-    "keywords": ["text", "levenshtein", "similar_text", "laravel", "search", "find"],
+    "keywords": ["text", "levenshtein", "similar_text", "laravel", "search", "find", "fuzzy"],
     "authors": [
         {
             "name": "rap2hpoutre",
