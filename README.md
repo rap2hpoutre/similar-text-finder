@@ -2,7 +2,7 @@
 [![Packagist](https://img.shields.io/packagist/l/rap2hpoutre/similar-text-finder.svg)](https://packagist.org/packages/rap2hpoutre/similar-text-finder) [![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/rap2hpoutre/similar-text-finder/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/rap2hpoutre/similar-text-finder/?branch=master) 
 [![Build Status](https://travis-ci.org/rap2hpoutre/similar-text-finder.svg?branch=master)](https://travis-ci.org/rap2hpoutre/similar-text-finder)
 [![Code Coverage](https://scrutinizer-ci.com/g/rap2hpoutre/similar-text-finder/badges/coverage.png?b=master)](https://scrutinizer-ci.com/g/rap2hpoutre/similar-text-finder/?branch=master)
-[![SensioLabs Insight](https://img.shields.io/sensiolabs/i/d02347d2-b307-471e-aeb5-2a31183f5d19.svg)]()
+[![SensioLabsInsight](https://insight.sensiolabs.com/projects/d02347d2-b307-471e-aeb5-2a31183f5d19/mini.png)](https://insight.sensiolabs.com/projects/d02347d2-b307-471e-aeb5-2a31183f5d19)
 ## TL;DR
 
 Similar text finder. Install via composer, works with any framework: Laravel, Slim, Symfony, etc.
