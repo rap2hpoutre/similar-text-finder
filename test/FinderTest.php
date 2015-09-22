@@ -1,15 +1,16 @@
-<?php namespace SimilarText\Test;
+<?php
 
-use \SimilarText\Finder;
+namespace SimilarText\test;
+
+use SimilarText\Finder;
 
 /**
- * Class FinderTest
- * @package SimilarText\Test
+ * Class FinderTest.
  */
 class FinderTest extends \PHPUnit_Framework_TestCase
 {
     /**
-     * Test first() method
+     * Test first() method.
      */
     public function testFirst()
     {
@@ -18,7 +19,7 @@ class FinderTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * Test all() method
+     * Test all() method.
      */
     public function testAll()
     {
@@ -27,17 +28,19 @@ class FinderTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * Test hasExactMatch() method
+     * Test hasExactMatch() method.
      */
-    public function testHasExactMatch() {
+    public function testHasExactMatch()
+    {
         $text_finder = new Finder('banana', ['apple', 'kiwi', 'banana']);
         $this->assertTrue($text_finder->hasExactMatch());
     }
 
     /**
-     * Test hasExactMatch() method
+     * Test hasExactMatch() method.
      */
-    public function testHasNotExactMatch() {
+    public function testHasNotExactMatch()
+    {
         $text_finder = new Finder('banana', ['apple', 'kiwi']);
         $this->assertFalse($text_finder->hasExactMatch());
     }
