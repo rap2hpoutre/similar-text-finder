@@ -1,15 +1,12 @@
-<?php namespace SimilarText;
+<?php
 
+namespace SimilarText;
 
 /**
- * Class Finder
- * @package SimilarText
- *
- * Thanks to: http://php.net/manual/fr/function.levenshtein.php#113702
+ * Class Finder.
  */
 class Finder
 {
-
     /**
      * @var string Needle
      */
@@ -36,7 +33,7 @@ class Finder
     }
 
     /**
-     * Sort Haystack
+     * Sort Haystack.
      */
     private function sortHaystack()
     {
@@ -56,6 +53,7 @@ class Finder
     {
         $this->sortHaystack();
         reset($this->sorted_haystack);
+
         return key($this->sorted_haystack);
     }
 
@@ -65,32 +63,38 @@ class Finder
     public function all()
     {
         $this->sortHaystack();
+
         return array_keys($this->sorted_haystack);
     }
 
     /**
      * @return bool
      */
-    public function hasExactMatch() {
+    public function hasExactMatch()
+    {
         return in_array($this->needle, $this->haystack);
     }
 
     /**
      * @param $str
      * @param $map
+     *
      * @return string
      */
     private function utf8ToExtendedAscii($str, &$map)
     {
         // find all multi-byte characters (cf. utf-8 encoding specs)
-        $matches = array();
-        if (!preg_match_all('/[\xC0-\xF7][\x80-\xBF]+/', $str, $matches))
-            return $str; // plain ascii string
+        $matches = [];
+        if (!preg_match_all('/[\xC0-\xF7][\x80-\xBF]+/', $str, $matches)) {
+            return $str;
+        } // plain ascii string
 
         // update the encoding map with the characters not already met
-        foreach ($matches[0] as $mbc)
-            if (!isset($map[$mbc]))
+        foreach ($matches[0] as $mbc) {
+            if (!isset($map[$mbc])) {
                 $map[$mbc] = chr(128 + count($map));
+            }
+        }
 
         // finally remap non-ascii characters
         return strtr($str, $map);
@@ -99,11 +103,12 @@ class Finder
     /**
      * @param $s1
      * @param $s2
+     *
      * @return int
      */
     private function levenshteinUtf8($s1, $s2)
     {
-        $charMap = array();
+        $charMap = [];
         $s1 = $this->utf8ToExtendedAscii($s1, $charMap);
         $s2 = $this->utf8ToExtendedAscii($s2, $charMap);
 
