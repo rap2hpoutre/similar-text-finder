@@ -13,17 +13,17 @@ class Finder
     /**
      * @var string Needle
      */
-    private $needle;
+    protected $needle;
 
     /**
      * @var array Haystack
      */
-    private $haystack;
+    protected $haystack;
 
     /**
      * @var array Haystack
      */
-    private $sorted_haystack;
+    protected $sorted_haystack;
 
     /**
      * @param $needle
@@ -38,7 +38,7 @@ class Finder
     /**
      * Sort Haystack
      */
-    private function sortHaystack()
+    protected function sortHaystack()
     {
         $sorted_haystack = [];
         foreach ($this->haystack as $string) {
@@ -80,7 +80,7 @@ class Finder
      * @param $map
      * @return string
      */
-    private function utf8ToExtendedAscii($str, &$map)
+    protected function utf8ToExtendedAscii($str, &$map)
     {
         // find all multi-byte characters (cf. utf-8 encoding specs)
         $matches = array();
@@ -101,7 +101,7 @@ class Finder
      * @param $s2
      * @return int
      */
-    private function levenshteinUtf8($s1, $s2)
+    protected function levenshteinUtf8($s1, $s2)
     {
         $charMap = array();
         $s1 = $this->utf8ToExtendedAscii($s1, $charMap);
