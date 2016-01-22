@@ -1,6 +1,5 @@
-<?php namespace SimilarText;
-
-
+<?php
+namespace SimilarText;
 /**
  * Class Finder
  * @package SimilarText
@@ -9,25 +8,29 @@
  */
 class Finder
 {
-
     /**
      * @var string Needle
      */
-    private $needle;
+    protected $needle;
 
     /**
      * @var array Haystack
      */
-    private $haystack;
+    protected $haystack;
 
     /**
+     * Holds the sorted comparison stack
+     * 
      * @var array Haystack
      */
-    private $sorted_haystack;
+    protected $sorted_haystack;
 
     /**
-     * @param $needle
-     * @param $haystack
+     * Finder constructor
+     * 
+     * @param string $needle
+     * @param array $haystack
+     * @return void
      */
     public function __construct($needle, $haystack)
     {
@@ -37,8 +40,10 @@ class Finder
 
     /**
      * Sort Haystack
+     * 
+     * @return void
      */
-    private function sortHaystack()
+    protected function sortHaystack()
     {
         $sorted_haystack = [];
         foreach ($this->haystack as $string) {
@@ -50,6 +55,8 @@ class Finder
     }
 
     /**
+     * Returns the highest match
+     * 
      * @return mixed
      */
     public function first()
@@ -60,6 +67,8 @@ class Finder
     }
 
     /**
+     * Returns all strings in sorted match order
+     * 
      * @return array
      */
     public function all()
@@ -69,44 +78,54 @@ class Finder
     }
 
     /**
+     * Returns whether there is an exact match
+     * 
      * @return bool
      */
-    public function hasExactMatch() {
+    public function hasExactMatch()
+    {
         return in_array($this->needle, $this->haystack);
     }
 
     /**
-     * @param $str
-     * @param $map
+     * Ensures a string only uses ascii characters
+     * 
+     * @param string $str
+     * @param array $map
      * @return string
      */
-    private function utf8ToExtendedAscii($str, &$map)
+    protected function utf8ToExtendedAscii($str, &$map)
     {
         // find all multi-byte characters (cf. utf-8 encoding specs)
         $matches = array();
-        if (!preg_match_all('/[\xC0-\xF7][\x80-\xBF]+/', $str, $matches))
+        if (!preg_match_all('/[\xC0-\xF7][\x80-\xBF]+/', $str, $matches)) {
             return $str; // plain ascii string
+        }
 
         // update the encoding map with the characters not already met
-        foreach ($matches[0] as $mbc)
-            if (!isset($map[$mbc]))
+        foreach ($matches[0] as $mbc) {
+            if (!isset($map[$mbc])) {
                 $map[$mbc] = chr(128 + count($map));
+            }
+        }
 
         // finally remap non-ascii characters
         return strtr($str, $map);
     }
 
     /**
-     * @param $s1
-     * @param $s2
+     * Calculates the levenshtein distance between two strings
+     * 
+     * @param string $string1
+     * @param string $string2
      * @return int
      */
-    private function levenshteinUtf8($s1, $s2)
+    protected function levenshteinUtf8($string1, $string2)
     {
         $charMap = array();
-        $s1 = $this->utf8ToExtendedAscii($s1, $charMap);
-        $s2 = $this->utf8ToExtendedAscii($s2, $charMap);
+        $string1 = $this->utf8ToExtendedAscii($string1, $charMap);
+        $string2 = $this->utf8ToExtendedAscii($string2, $charMap);
 
-        return levenshtein($s1, $s2);
+        return levenshtein($string1, $string2);
     }
 }
