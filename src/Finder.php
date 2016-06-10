@@ -1,5 +1,6 @@
 <?php
 namespace SimilarText;
+
 /**
  * Class Finder
  * @package SimilarText
@@ -19,14 +20,14 @@ class Finder
     protected $haystack;
 
     /**
-     * Holds the sorted comparison stack
+     * Hold the sorted comparison stack.
      * 
      * @var array Haystack
      */
     protected $sorted_haystack;
 
     /**
-     * Finder constructor
+     * Finder constructor.
      * 
      * @param string $needle
      * @param array $haystack
@@ -39,7 +40,7 @@ class Finder
     }
 
     /**
-     * Sort Haystack
+     * Sort Haystack.
      * 
      * @return void
      */
@@ -55,7 +56,7 @@ class Finder
     }
 
     /**
-     * Returns the highest match
+     * Return the highest match.
      * 
      * @return mixed
      */
@@ -67,7 +68,7 @@ class Finder
     }
 
     /**
-     * Returns all strings in sorted match order
+     * Return all strings in sorted match order.
      * 
      * @return array
      */
@@ -78,7 +79,7 @@ class Finder
     }
 
     /**
-     * Returns whether there is an exact match
+     * Return whether there is an exact match.
      * 
      * @return bool
      */
@@ -88,7 +89,7 @@ class Finder
     }
 
     /**
-     * Ensures a string only uses ascii characters
+     * Ensure a string only uses ascii characters.
      * 
      * @param string $str
      * @param array $map
@@ -96,25 +97,25 @@ class Finder
      */
     protected function utf8ToExtendedAscii($str, &$map)
     {
-        // find all multi-byte characters (cf. utf-8 encoding specs)
+        // Find all multi-byte characters (cf. utf-8 encoding specs).
         $matches = array();
         if (!preg_match_all('/[\xC0-\xF7][\x80-\xBF]+/', $str, $matches)) {
             return $str; // plain ascii string
         }
 
-        // update the encoding map with the characters not already met
+        // Update the encoding map with the characters not already met.
         foreach ($matches[0] as $mbc) {
             if (!isset($map[$mbc])) {
                 $map[$mbc] = chr(128 + count($map));
             }
         }
 
-        // finally remap non-ascii characters
+        // Finally remap non-ascii characters.
         return strtr($str, $map);
     }
 
     /**
-     * Calculates the levenshtein distance between two strings
+     * Calculate the levenshtein distance between two strings.
      * 
      * @param string $string1
      * @param string $string2
