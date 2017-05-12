@@ -2,7 +2,15 @@
     "name": "rap2hpoutre/similar-text-finder",
     "description": "Fuzzy Search, similar text finder: \"Did you mean `foo` ?\"",
     "license": "MIT",
-    "keywords": ["text", "levenshtein", "similar_text", "laravel", "search", "find", "fuzzy"],
+    "keywords": [
+        "text",
+        "levenshtein",
+        "similar_text",
+        "laravel",
+        "search",
+        "find",
+        "fuzzy"
+    ],
     "authors": [
         {
             "name": "rap2hpoutre",
@@ -11,7 +19,7 @@
     ],
     "minimum-stability": "stable",
     "require-dev": {
-      "phpunit/phpunit": "~4.0"
+        "phpunit/phpunit": "^6.1.3"
     },
     "autoload": {
         "psr-4": {
