@@ -19,7 +19,7 @@ echo $text_finder->first();
 
 ## Installation
 Install with composer
-`composer require rap2hpoutre/similar-text-finder`
+`composer require rap2hpoutre/similar-text-finder`.
 That's all.
 
 You can now use it in your framework's controller, or wherever you want (you don't need a framework anyway).
