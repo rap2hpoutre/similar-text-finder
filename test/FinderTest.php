@@ -1,12 +1,13 @@
 <?php namespace SimilarText\Test;
 
-use \SimilarText\Finder;
+use SimilarText\Finder;
+use PHPUnit\Framework\TestCase;
 
 /**
  * Class FinderTest
  * @package SimilarText\Test
  */
-class FinderTest extends \PHPUnit_Framework_TestCase
+class FinderTest extends TestCase
 {
     /**
      * Test first() method
