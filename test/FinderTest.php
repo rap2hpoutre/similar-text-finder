@@ -42,4 +42,21 @@ class FinderTest extends TestCase
         $text_finder = new Finder('banana', ['apple', 'kiwi']);
         $this->assertFalse($text_finder->hasExactMatch());
     }
+
+    /**
+     * Test threshold() method
+     */
+    public function testThreshold() {
+        $text_finder = new Finder('bananna', ['apple', 'kiwi', 'banana', 'orange', 'bandana', 'banana', 'canary']);
+        $this->assertEquals(['banana', 'bandana', 'canary'], $text_finder->threshold(4)->all());
+
+        $text_finder = new Finder('bananna', ['apple', 'kiwi', 'banana', 'orange', 'bandana', 'banana', 'canary']);
+        $this->assertEquals('banana', $text_finder->threshold(2)->first());
+
+        $text_finder = new Finder('banana', ['apple', 'kiwi', 'banana', 'orange', 'bandana', 'banana', 'canary']);
+        $this->assertEquals('banana', $text_finder->threshold(0)->first());
+
+        $text_finder = new Finder('bananna', ['apple', 'kiwi', 'orange', 'melon']);
+        $this->assertNull($text_finder->threshold(2)->first());
+    }
 }
