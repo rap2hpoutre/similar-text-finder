@@ -27,6 +27,11 @@ class Finder
     protected $sorted_haystack;
 
     /**
+     * @var null|int Threshold
+     */
+    protected $threshold;
+
+    /**
      * Finder constructor.
      * 
      * @param string $needle
@@ -50,9 +55,31 @@ class Finder
         foreach ($this->haystack as $string) {
             $sorted_haystack[$string] = $this->levenshteinUtf8($this->needle, $string);
         }
+
+        // Apply threshold when set.
+        if(!is_null($this->threshold)){
+            $sorted_haystack = array_filter($sorted_haystack, function ($score){
+                return $score <= $this->threshold;
+            });
+        }
+
         asort($sorted_haystack);
 
         $this->sorted_haystack = $sorted_haystack;
+    }
+
+    /**
+     * Apply threshold to filter only relevant results. The higher
+     * the threshold the more results there will be returned.
+     *
+     * @param int|null $threshold
+     * @return Finder
+     */
+    public function threshold($threshold = null)
+    {
+        $this->threshold = $threshold;
+
+        return $this;
     }
 
     /**
